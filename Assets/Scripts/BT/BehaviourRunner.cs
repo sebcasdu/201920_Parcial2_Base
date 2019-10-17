@@ -18,7 +18,7 @@ namespace AI
 		{
 			elapsedTime += Time.deltaTime;
 			if (elapsedTime >= stepTime) {
-				root.Execute ();
+				root.Execute ();    
 				elapsedTime = 0f;
 			}
 		}
