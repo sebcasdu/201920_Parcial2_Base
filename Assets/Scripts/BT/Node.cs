@@ -2,6 +2,7 @@
 using System.Collections;
 
 namespace AI
+
 {
 	public abstract class Node : MonoBehaviour 
 	{

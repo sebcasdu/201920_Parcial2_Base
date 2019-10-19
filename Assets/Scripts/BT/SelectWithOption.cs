@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-
+using AI;
 namespace AI
 {
     public abstract class SelectWithOption : Node
     {
         [SerializeField]
-        private Group successTree;
+        public Group successTree;
 
         [SerializeField]
         private Group failTree;

@@ -7,8 +7,13 @@ namespace AI
 	{
 		public override void Execute ()
 		{
+
 			if (Check ())
-				base.Execute ();
+            {
+                
+                base.Execute();
+            }
+            
 		}
 
 		protected abstract bool Check ();

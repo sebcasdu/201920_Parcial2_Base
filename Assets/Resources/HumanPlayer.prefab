@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9127417505752389584}
   - component: {fileID: 1774260238501594313}
   - component: {fileID: 8088273836373698803}
+  - component: {fileID: 7257298350947327390}
   m_Layer: 0
   m_Name: HumanPlayer
   m_TagString: Untagged
@@ -68,6 +69,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -128,6 +130,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5b116a60014734c84aba66ab126c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopTime: 3
+  puedemoverse: 1
   walkable:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 512
+--- !u!54 &7257298350947327390
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798604877492829669}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
