@@ -12,8 +12,9 @@ public abstract class PlayerController : MonoBehaviour
     public bool puedemoverse=true;
     protected NavMeshAgent agent { get; set; }
     public delegate void OnTaggedChange(string newTagged);
-    public event OnTaggedChange ontaggedChange;
-    
+    public static event OnTaggedChange onTaggedChange;
+    string name;
+
     public bool IsTagged { get;  set; }
    
     public void SwitchRoles()
@@ -32,9 +33,11 @@ public abstract class PlayerController : MonoBehaviour
     {
         // Stop BT runner if AI player, else stop movement.
         puedemoverse = false;
-        Debug.Log(puedemoverse);
+
         if (gameObject.GetComponent<BehaviourRunner>() != null)
+        {
             gameObject.GetComponent<BehaviourRunner>().enabled = false;
+        }
         yield return new WaitForSeconds(stopTime);
         puedemoverse = true;
         gameObject.GetComponent<BehaviourRunner>().enabled = true;
@@ -46,28 +49,33 @@ public abstract class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+
+        name = gameObject.name;
         agent = GetComponent<NavMeshAgent>();
        
     }
-    public void ChangedTag()
-    { 
-    
+    public void  stopLogic()
+    {
+        StartCoroutine(StopLogic());
     }
     private void OnCollisionEnter(Collision collision)
     {
         PlayerController col = collision.gameObject.GetComponent<PlayerController>();
-        if (col.IsTagged)
-        {
-            
-            Debug.Log(col.name+col.IsTagged);
 
+
+        if (IsTagged)
+        {
+            col.stopLogic();
+            IsTagged = false;
+            col.IsTagged = true;
+           
+          
             
-            SwitchRoles();
-            col.SwitchRoles();
-            Debug.Log(col.name + col.IsTagged);
-            StartCoroutine(StopLogic());
+            onTaggedChange(name);
+           
             
         }
+       
 
     }
 }
